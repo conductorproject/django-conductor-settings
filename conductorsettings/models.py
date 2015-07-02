@@ -114,12 +114,12 @@ class LocationRelativePath(models.Model):
 
 
 class FindLocationRelativePath(LocationRelativePath):
-    location = models.ForeignKey(FindLocation)
+    location = models.ForeignKey(FindLocation, related_name="relative_paths")
 
 
 class GetLocationRelativePath(LocationRelativePath):
-    location = models.ForeignKey(GetLocation)
+    location = models.ForeignKey(GetLocation, related_name="relative_paths")
 
 
 class PostLocationRelativePath(LocationRelativePath):
-    location = models.ForeignKey(PostLocation)
+    location = models.ForeignKey(PostLocation, related_name="relative_paths")

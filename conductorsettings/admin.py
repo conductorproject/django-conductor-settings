@@ -29,7 +29,7 @@ class ParameterInline(admin.StackedInline):
 
 @admin.register(models.Collection)
 class CollectionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("id", "short_name", "name",)
 
 
 @admin.register(models.Server)
