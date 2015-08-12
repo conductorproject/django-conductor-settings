@@ -1,4 +1,4 @@
 include LICENSE
 include README.rst
-recursive-include conductorsettings/static *
-recursive-include conductorsettings/templates *
+recursive-include conductor_settings_resources/static *
+recursive-include conductor_settings_resources/templates *

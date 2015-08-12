@@ -1,6 +1,9 @@
+from __future__ import absolute_import
+
 from django.contrib import admin
 
 from . import models
+
 
 class ServerSchemeBasePathInline(admin.StackedInline):
     model = models.ServerSchemeBasePath
@@ -34,32 +37,34 @@ class CollectionAdmin(admin.ModelAdmin):
 
 @admin.register(models.Server)
 class ServerAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("id", "name", "domain",)
 
 
 @admin.register(models.ServerScheme)
 class ServerSchemeAdmin(admin.ModelAdmin):
-    inlines = [ServerSchemeBasePathInline,]
+    inlines = [ServerSchemeBasePathInline]
     list_display = ("id", "server", "name", "method",)
 
 
 @admin.register(models.Resource)
 class ResourceAdmin(admin.ModelAdmin):
-    inlines = [ParameterInline,]
-    list_display = ("id", "name", "local_pattern",)
+    inlines = [ParameterInline]
+    list_display = ("id", "name", "local_pattern", "urn_pattern")
 
 
 @admin.register(models.FindLocation)
 class FindLocationAdmin(admin.ModelAdmin):
-    inlines = [FindLocationRelativePathInline,]
+    inlines = [FindLocationRelativePathInline]
+    list_display = ("id", "resource", "server_scheme",)
 
 
 @admin.register(models.GetLocation)
 class GetLocationAdmin(admin.ModelAdmin):
-    inlines = [GetLocationRelativePathInline,]
+    inlines = [GetLocationRelativePathInline]
     list_display = ("id", "resource", "server_scheme",)
 
 
 @admin.register(models.PostLocation)
 class PostLocationAdmin(admin.ModelAdmin):
-    inlines = [PostLocationRelativePathInline,]
+    inlines = [PostLocationRelativePathInline]
+    list_display = ("id", "resource", "server_scheme",)
